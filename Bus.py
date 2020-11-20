@@ -97,7 +97,7 @@ if __name__ == '__main__':
     sc = SparkContext()
     bus = sc.textFile('/data/share/ebms/2020/2020_10_01_prediction.csv')
     
-    with open('route_stops.json') as f:
+    with open('/user/sali019/route_stops.json') as f:
         data = json.load(f)
     for i in data:
         i['stops_distance']=[]
