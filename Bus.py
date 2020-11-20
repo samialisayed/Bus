@@ -11,7 +11,7 @@ import scipy.interpolate
 from dateutil import parser
 import datetime
 import numpy as np
-import sys
+#import sys
 
 from pyspark import SparkContext
 
@@ -97,7 +97,7 @@ if __name__ == '__main__':
     sc = SparkContext()
     bus = sc.textFile('/data/share/ebms/2020/2020_10_01_prediction.csv')
     
-    with open(sys.argv[1]) as f:
+    with open('route_stops.json') as f:
         data = json.load(f)
     for i in data:
         i['stops_distance']=[]
