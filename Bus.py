@@ -95,7 +95,7 @@ def to_csv(x):
 
 if __name__ == '__main__':
     sc = SparkContext()
-    bus = sc.textFile('/data/share/ebms/2020/2020_10_01_prediction.csv')
+    bus = sc.textFile('/data/share/ebms/2020/*.csv')
     
     with open('route_stops.json') as f:
         data = json.load(f)
@@ -112,4 +112,4 @@ if __name__ == '__main__':
     first = final.take(1)
     bus_time = final.mapPartitionsWithIndex(interval).mapPartitionsWithIndex(searching).mapPartitionsWithIndex(merge_interval).mapPartitionsWithIndex(Finding_time)
     
-    bus_time.map(to_csv).saveAsTextFile('2020_10_01.csv')
+    bus_time.map(to_csv).saveAsTextFile('All.csv')
